@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <input type="text" id="search" placeholder="Type here..." />
+        
+        
+        <script>
+            function debounce(fn, delay) {
+                let timer;
+
+
+                return function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(fn, delay);
+                };
+            }
+            
+            function searchAPI() {
+                console.log("API is called now");
+            }
+            
+            const debouncedSearch = debounce(searchAPI, 1000);     // after 1 sec it will trigger the apiSearch untill it wait
+            
+            document.getElementById("search").addEventListener("keyup", debouncedSearch);
+        </script>
+
+</body>
+</html>

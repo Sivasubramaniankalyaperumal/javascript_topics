@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: lightgray;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .active {
+      background-color: red;
+      transform: scale(1.1);
+    }
+
+    .parent {
+      padding: 20px;
+      background-color: #ddd;
+    }
+
+    .child {
+      padding: 20px;
+      background-color: #aaa;
+    }
+
+    li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Button Toggle Example</h2>
+  <button>Toggle Box</button>
+  <div class="box"></div>
+
+  <hr>
+
+  <h2>Event Bubbling & Capturing</h2>
+  <div class="parent">
+    Parent
+    <div class="child">Child</div>
+  </div>
+
+  <hr>
+
+  <h2>Event Delegation</h2>
+  <ul id="list">
+    <li id="a">Item 1</li>
+    <li id="a">Item 2</li>
+    <li id="a">Item 3</li>
+  </ul>
+
+<script>
+/* ===============================
+   1. TOGGLE CLASS (YOUR CODE)
+================================*/
+let btn = document.querySelector("button");
+let box = document.querySelector(".box");
+
+btn.addEventListener("click", () => {
+  box.classList.toggle("active");
+});
+
+
+/* ===============================
+   2. EVENT BUBBLING
+================================*/
+let parent = document.querySelector(".parent");
+let child = document.querySelector(".child");
+
+parent.addEventListener("click", () => {
+  alert("Parent clicked (BUBBLING)");
+});
+
+child.addEventListener("click", () => {
+  alert("Child clicked (BUBBLING)");
+});
+
+
+/* ===============================
+   3. EVENT CAPTURING
+================================*/
+parent.addEventListener("click", () => {
+  console.log("Parent clicked (CAPTURING)");
+}, true);
+
+child.addEventListener("click", () => {
+  console.log("Child clicked (CAPTURING)");
+}, true);
+
+
+/* ===============================
+   4. EVENT DELEGATION
+================================*/
+let list = document.getElementById("list");
+
+list.addEventListener("click", (event) => {
+  if (event.target.id === "a") {
+    alert("Clicked: " + event.target.innerText);
+  }
+});
+</script>
+
+</body>
+</html>

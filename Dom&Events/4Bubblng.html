@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fp,.sp{
+             padding: 40px;
+             background-color: #ddd;
+             border: 1px;
+             border-style: dashed;
+        }
+        .p,.s{
+             padding: 40px;
+             background-color: #ddd;
+             border: 1px;
+             border-style: dashed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event BUBBLING child to parent</h1>
+    <div class="fp">layer 1
+        <div class="sp">layer 2
+            <button id="btn">im child</button>
+        </div>
+    </div>
+
+    <script>
+        let l1=document.querySelector(".fp")
+        let l2=document.querySelector(".sp")
+        let btn=document.getElementById("btn")
+        l1.addEventListener("click",(e)=>{alert("first layer clicked"),e.stopPropagation()})//stopPropagation used here
+        l2.addEventListener("click",(e)=>{alert("second layer clicked"),e.stopPropagation()})//stopPropagation used here
+        btn.addEventListener("click",(e)=>{alert("third layer"),e.stopPropagation()})//stopPropagation used here
+    </script>
+
+
+<!-- event capturing -->
+    <h1>Event Capturing parent to child</h1>
+    <div class="p">layer 1
+        <div class="s">layer 2
+            <button id="bn">im child</button>
+        </div>
+    </div>
+
+    <script>
+        let l11=document.querySelector(".p")
+        let l22=document.querySelector(".s")
+        let bn=document.getElementById("bn")
+        l11.addEventListener("click",()=>{ alert("first layer clicked")},true)
+        l22.addEventListener("click",()=>{alert("second layer clicked")},true)
+        bn.addEventListener("click",()=>{alert("third layer")},true)
+    </script>
+
+</body>
+</html>

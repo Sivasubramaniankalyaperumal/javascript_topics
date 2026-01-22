@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Throttle Demo</title>
+    <style>
+        body {
+            height: 3000px;
+            font-family: Arial;
+            padding: 20px;
+        }
+        .box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: black;
+            color: white;
+            padding: 15px 25px;
+            font-size: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Scroll the page ⬇️</h2>
+<p>Watch the number change</p>
+
+<div class="box">
+    Throttle Count: <span id="count">0</span>
+</div>
+
+<!--
+In throttled scrolling (like reels)
+
+When you scroll ➝ content will load
+
+Then for the next 1000ms ➝ scrolling continues but no new load check happens
+
+After 500ms, if you are still scrolling ➝ it checks again
+
+Content loads only if you’re near the end, not automatically
+-->
+
+<script>
+function throttle(fn, delay) {
+    let lastTime = 0;
+    return function () {
+        const now = Date.now();
+        if (now - lastTime >= delay) {
+            lastTime = now;
+            fn();
+        }
+    };
+}
+
+let count = 0;
+
+function handleScroll() {
+    count++;
+    document.getElementById("count").innerText = count;
+}
+
+window.addEventListener("scroll", throttle(handleScroll, 1000));
+</script>
+
+</body>
+</html>

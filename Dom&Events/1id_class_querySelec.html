@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="name">hi im shiva</h1>
+    <h1 id="num">one</h1>
+    <h1 class="na">its sathyaDev</h1>
+    <h1 class="na">two</h1>
+
+    <script>
+        //by using it we can select the content and manipulate
+        document.getElementById("name").style.color="red";
+        let number=document.getElementById("num");
+        number.style.color="green";
+
+        //by using it we can get the contentaccess but in array[0]format
+        document.getElementsByClassName("na")[1].style.color="yellow";
+
+        //we can get the content access of <h1>tag or (.na)class but only for 1st element
+        document.querySelector("h1").innerText="forced by querySelector"
+
+        //we can get the content access of all <h1>tag or (.na)class element
+     ////////   document.querySelectorAll("h1").forEach(num=>{num.style.color="teal";})
+    </script>
+</body>
+</html> 

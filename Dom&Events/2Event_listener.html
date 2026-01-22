@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="di" style="height: 100vh; width: 100vh;">
+        <button id="bg">change button color</button>
+        <button id="mo">come here</button>
+    </div>
+    
+    <script>
+        let bg= document.getElementById("bg")
+        bg.addEventListener("click", function(){
+            bg.style.backgroundColor="red";
+        })
+
+        let mouse= document.getElementById("mo");
+        mouse.addEventListener("mouseover", changer )
+        function changer(){
+            mouse.style.backgroundColor="green";
+            mouse.innerText="get away"
+        }
+
+        mouse.addEventListener("mouseout",function(){
+            mouse.style.backgroundColor="yellow";
+            mouse.innerText="come here";
+        })
+
+        let clear;
+        let clear2;
+        let divi=document.getElementById("di")
+        divi.addEventListener("mousemove",function(){
+            clearTimeout(clear);
+
+            clear2=setTimeout(()=>{
+            divi.style.backgroundColor="white";
+        },2000)
+            clear=setTimeout(()=>{
+            divi.style.backgroundColor="blue";
+        })
+        })
+
+        
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="text">change the text</h1>
+    <h1 id="col">change the style</h1>
+    <img src="./lalo.jpeg" height="200px" id="im"></img>
+    <button onclick="changer()">change img</button>
+    <script>
+        document.getElementById("text").textContent="changed the Content";
+
+        document.getElementById("col").style.backgroundColor="orange";
+
+        
+        function changer(){
+            document.getElementById("im").setAttribute("src","./nobody.jpg");
+        }
+        
+    </script>
+</body>
+</html>

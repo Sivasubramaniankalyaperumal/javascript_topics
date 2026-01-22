@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+    .a{
+        display: flex;
+        flex:1;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .a1{
+        flex: 1 1 45%;
+        background-color: rgb(114, 242, 235);
+        border-radius: 10px;
+        min-height: 60px;
+    }
+    </style>
+<body>
+    <div  class="a">
+        <div class="a1">product 1</div>
+        <div class="a1">product 2</div>
+        <div class="a1">product 3</div>
+        <div class="a1">product 4</div>
+        <div class="a1">product 5</div>
+    </div>
+
+    <script>
+        document.querySelector(".a").addEventListener("click",(e)=>{
+            if(e.target.classList.contains("a1")){
+                alert(e.target.innerText+" : order successful")
+            }
+        })
+    </script>
+</body>
+</html>
